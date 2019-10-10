@@ -1,0 +1,29 @@
+.btn {
+   appearance: none;
+   border: none;
+   background-color: $primary-light-color;
+   color: $font-color;
+}
+
+.btn-menu {
+   min-width: 270px;
+   margin-top: 3rem;
+   background-color: $primary-light-color;
+   color: $font-color;
+
+   &--1 {
+      height: 7.5rem;
+      font-size: $font-size-l;
+   }
+
+   &--2 {
+      height: 6rem;
+      font-size: $font-size-m;
+   }
+}
+
+.btn-control {
+   min-width: 170px;
+   height: 5rem;
+   font-size: $font-size-s;
+}

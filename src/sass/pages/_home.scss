@@ -1,0 +1,18 @@
+.main {
+   padding: 1rem;
+}
+
+.section-menu {
+   @include flexbox;
+   width: 100%;
+   margin-top: 4.8rem;
+
+   &__container {
+      @include flexboxColumn;
+   }
+}
+
+.section-control {
+   @include flexbox;
+   justify-content: space-between;
+}

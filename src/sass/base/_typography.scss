@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
+
+body {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;
+}
+
+.heading-title {
+   width: 70%;
+
+   &__title {
+      font-size: $font-size-xl;
+   }
+}
