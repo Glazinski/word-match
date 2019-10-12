@@ -11,8 +11,3 @@
       @include flexboxColumn;
    }
 }
-
-.section-control {
-   @include flexbox;
-   justify-content: space-between;
-}

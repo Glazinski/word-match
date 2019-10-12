@@ -3,6 +3,7 @@
    border: none;
    background-color: $primary-light-color;
    color: $font-color;
+   border-radius: 4px;
 }
 
 .btn-menu {
@@ -26,4 +27,8 @@
    min-width: 170px;
    height: 5rem;
    font-size: $font-size-s;
+
+   &--cancel {
+      background-color: $red-color;
+   }
 }

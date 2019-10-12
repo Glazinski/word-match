@@ -12,3 +12,17 @@ body {
       font-size: $font-size-xl;
    }
 }
+
+.board-heading {
+   font-size: $font-size-s;
+   font-weight: 400;
+}
+
+.board-time {
+   color: lightgreen;
+   font-size: $font-size-s;
+}
+
+.list {
+   list-style: none;
+}

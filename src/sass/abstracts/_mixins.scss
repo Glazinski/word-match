@@ -11,3 +11,9 @@
    flex-direction: column;
    text-align: center;
 }
+
+@mixin flexboxBetween {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
