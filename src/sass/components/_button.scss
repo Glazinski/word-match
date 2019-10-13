@@ -32,3 +32,8 @@
       background-color: $red-color;
    }
 }
+
+.btn-clicked {
+   background-color: $primary-color !important;
+   box-shadow: 0 1rem 3rem rgba($primary-color, 0.8) !important;
+}

@@ -1,0 +1,19 @@
+import axios from 'axios';
+
+export default class Search {
+   constructor(word) {
+      this.word = word;
+   }
+
+   async getWord() {
+      try {
+         const res = await axios(
+            `http://api.datamuse.com/words?sp=%2A%2A${this.word}%2A%2A`
+         );
+
+         this.data = res.data;
+      } catch (err) {
+         console.log(err);
+      }
+   }
+}

@@ -62,3 +62,26 @@
       margin-top: 2rem;
    }
 }
+
+.section-letters {
+   width: 100%;
+   margin-top: 2.5rem;
+
+   &__container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      grid-gap: 1rem;
+      justify-content: center;
+      align-items: center;
+   }
+
+   &__letter-box {
+      @include flexbox;
+      margin: 0 auto;
+      width: 75px;
+      height: 75px;
+      font-size: $font-size-m;
+      background-color: $secondary-darker-light;
+   }
+}
