@@ -1,14 +1,32 @@
 import { elements } from './base';
+import Letter from '../models/Letter';
 
-let userWord = '';
+let userWord = new Map();
 
 export const onLetterClick = (e, state) => {
+   const { innerHTML, dataset } = e.target;
+   const { id } = dataset;
+
    e.target.classList.toggle('btn-clicked');
 
-   userWord += e.target.innerHTML;
-   //e.target.style.pointerEvents = 'none';
+   if (userWord.has(id)) {
+      userWord.delete(id);
+   } else userWord.set(id, innerHTML.toLowerCase());
 
-   return (state.userWord = userWord.toLowerCase());
+   // Change Map to array join letters
+   // and return them to state
+   const concatedWord = Array.from(userWord.values()).join('');
+
+   document.querySelector(
+      '.curent-word'
+   ).innerHTML = concatedWord.toUpperCase();
+
+   return (state.userWord = concatedWord);
+};
+
+export const clearLetters = () => {
+   document.querySelector('.curent-word').innerHTML = '';
+   userWord.clear();
 };
 
 export const renderRandomLetters = () => {
@@ -27,3 +45,5 @@ export const renderRandomLetters = () => {
 
    elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
 };
+
+document.onclick = () => console.log(userWord);
