@@ -1,5 +1,4 @@
 import { elements } from './base';
-import Letter from '../models/Letter';
 
 let userWord = new Map();
 
@@ -29,8 +28,25 @@ export const clearLetters = () => {
    userWord.clear();
 };
 
+// export const renderRandomLetters = () => {
+//    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//    const charArr = [...characters];
+
+//    let buttonsMarkup = '';
+
+//    // RANDOM LETTER BOXES
+//    for (let i = 0; i < 16; i++) {
+//       buttonsMarkup += `<button data-id="${i}" class="btn btn-letter-box section-letters__letter-box">${
+//          charArr[Math.floor(Math.random() * charArr.length)]
+//       }</button>`;
+//       // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
+//    }
+
+//    elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
+// };
+
 export const renderRandomLetters = () => {
-   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   const characters = 'LUCKY';
    const charArr = [...characters];
 
    let buttonsMarkup = '';

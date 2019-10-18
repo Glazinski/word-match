@@ -22,6 +22,10 @@ export const countTime = () => {
          clearInterval(timer);
       }
 
+      if (sec <= 15 && min === 0) {
+         elements.timer.style.color = '#c73333';
+      }
+
       elements.timer.innerHTML = `${min}:${zero}${sec}`;
    }, 1000);
 };

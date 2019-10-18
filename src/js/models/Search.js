@@ -16,6 +16,4 @@ export default class Search {
          console.log(err);
       }
    }
-
-   isWordExist() {}
 }

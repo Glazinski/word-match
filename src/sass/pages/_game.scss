@@ -45,12 +45,14 @@
    width: 75%;
    text-align: left;
    padding-left: 2rem;
+   overflow: scroll;
 }
 
 .points {
    width: 25%;
    text-align: center;
    border-left: 1px solid $secondary-dark-color;
+   overflow: scroll;
 }
 
 .list {

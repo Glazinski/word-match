@@ -12,3 +12,5 @@ export const toggleGame = () => {
    elements.game.classList.toggle('hidden');
    elements.menu.classList.toggle('hidden');
 };
+
+export const newGame = () => {};
