@@ -7,7 +7,9 @@ import * as letters from './views/lettersView';
 import * as board from './views/boardView';
 import Board from './models/Board';
 
-const state = {};
+const state = {
+   points: 0
+};
 
 // PLAY CONTROLLER
 const controlPlay = () => {
@@ -65,9 +67,13 @@ const searchControll = async () => {
          state.board = new Board(state.search);
          state.board.doesWordExist();
 
-         // Result after user user input
-         const { word, points } = state.board;
-         board.showResults(word, points);
+         // Use second fuction in Board
+         // to sum up points in state
+         state.points = state.board.doesWordExist()(state.points);
+
+         // Result after user's input
+         const { word, point } = state.board;
+         board.showResults(word, point, state.points);
       } catch (err) {
          console.log(err);
       }

@@ -36,9 +36,18 @@
       width: 100%;
       height: 45px;
       background-color: $secondary-color;
-      padding-left: 2rem;
       font-size: $font-size-s;
    }
+}
+
+.curent-word {
+   width: 75%;
+   padding-left: 10%;
+}
+
+.points-result {
+   width: 25%;
+   @include flexbox;
 }
 
 .words {
