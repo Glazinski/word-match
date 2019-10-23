@@ -62,4 +62,4 @@ export const renderRandomLetters = () => {
    elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
 };
 
-document.onclick = () => console.log(userWord);
+//document.onclick = () => console.log(userWord);

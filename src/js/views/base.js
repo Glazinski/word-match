@@ -1,3 +1,6 @@
+import { clearLetters } from './lettersView';
+import { countTime } from './timerView';
+
 export const elements = {
    game: document.querySelector('.game'),
    menu: document.querySelector('.section-menu'),
@@ -13,4 +16,16 @@ export const toggleGame = () => {
    elements.menu.classList.toggle('hidden');
 };
 
-export const newGame = () => {};
+export const clearWords = () => {
+   clearLetters();
+
+   elements.letterBoxes.map(box => {
+      box.classList.remove('btn-clicked');
+      box.style.pointerEvents = 'auto';
+   });
+};
+
+export const newGame = () => {
+   clearWords();
+   countTime();
+};

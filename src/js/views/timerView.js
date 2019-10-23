@@ -26,6 +26,10 @@ export const countTime = () => {
          elements.timer.style.color = '#c73333';
       }
 
+      if (min === 0 && sec === 0) {
+         // END THE GAME
+      }
+
       elements.timer.innerHTML = `${min}:${zero}${sec}`;
    }, 1000);
 };
