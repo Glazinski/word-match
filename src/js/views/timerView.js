@@ -1,6 +1,7 @@
 import { elements } from './base';
 
 export const countTime = () => {
+   elements.timer.innerHTML = `3:00`;
    let min = 2;
    let sec = 60;
    let zero = '';
@@ -32,4 +33,6 @@ export const countTime = () => {
 
       elements.timer.innerHTML = `${min}:${zero}${sec}`;
    }, 1000);
+
+   return timer;
 };

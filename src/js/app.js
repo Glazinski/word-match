@@ -8,7 +8,8 @@ import * as board from './views/boardView';
 import Board from './models/Board';
 
 const state = {
-   points: 0
+   listOfWords: [],
+   allPoints: []
 };
 
 // PLAY CONTROLLER
@@ -17,7 +18,7 @@ const controlPlay = () => {
    base.toggleGame();
 
    // TIME CONTROLLER
-   time.countTime();
+   state.time = time.countTime();
    // LETTERS CONTROL
    lettersControl();
 
@@ -49,6 +50,7 @@ const lettersControl = () => {
 const searchControll = async e => {
    // If word that user has put is
    // longer than 3 characters then go
+
    e.preventDefault();
    const { type } = e.target.dataset;
    console.log(e.target.dataset);
@@ -71,15 +73,19 @@ const searchControll = async e => {
 
             // Checks if the word exists
             state.board = new Board(state.search);
-            state.board.doesWordExist();
 
-            // Use second fuction in Board
-            // to sum up points in state
-            state.points = state.board.doesWordExist()(state.points);
-
-            // Result after user's input
+            state.board.isWord();
             const { word, point } = state.board;
-            board.showResults(word, point, state.points);
+
+            // If word that user entered has been already
+            // entered earlier it won't appear on the screen
+            if (!state.listOfWords.includes(word)) {
+               state.listOfWords.push(word);
+               state.allPoints.push(point);
+
+               // Result after user's input
+               board.showResults(word, point, state.allPoints);
+            }
          } catch (err) {
             console.log(err);
          }
@@ -88,12 +94,29 @@ const searchControll = async e => {
       base.clearWords();
       state.userWord = '';
    } else if (type === 'home') {
-      base.toggleGame();
+      location.reload(true);
    } else if (type === 'new-game') {
-      //base.newGame()
-      //location.reload(true);
-      base.toggleGame();
-      controlPlay();
+      // Clears timer and start it from the beginning
+      clearInterval(state.time);
+
+      /****  DANGEROUS it changes state to
+      /**** its original form
+      for (let key in state) {
+         if (key !== 'points' && key !== 'time') {
+            delete state[key];
+         } else state[key] = 0;
+      }
+      *****/
+
+      /* CLEAR DOM */
+
+      // Sets new time
+      state.time = time.countTime();
+
+      base.clearWords();
+
+      // Call function which clear the board
+      board.showResults()();
    }
 };
 

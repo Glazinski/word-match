@@ -1,16 +1,26 @@
+import { elements } from './base';
+
 export const showResults = (word, point, points) => {
+   //const wordMarkup = `<li>${word}</li>`;
    const wordMarkup = `<li>${word}</li>`;
+
    const pointMarkup = `<li>${point}</li>`;
+
+   elements.words = document.querySelector('.list__words');
+   elements.points = document.querySelector('.list__points');
+   elements.result = document.querySelector('.points-result');
+
    // Add word to board which was found in API
-   document
-      .querySelector('.list__words')
-      .insertAdjacentHTML('beforeend', wordMarkup);
+   elements.words.insertAdjacentHTML('beforeend', wordMarkup);
+   elements.points.insertAdjacentHTML('beforeend', pointMarkup);
+   // Sum up points from array
+   elements.result.innerHTML = points.reduce((a, b) => a + b, 0);
 
-   // Prints point to each word
-   document
-      .querySelector('.list__points')
-      .insertAdjacentHTML('beforeend', pointMarkup);
-
-   // Prints accumulated points
-   document.querySelector('.points-result').innerHTML = points;
+   // Returning function which delets
+   // its conent
+   return () => {
+      elements.words.innerHTML = '';
+      elements.points.innerHTML = '';
+      elements.result.innerHTML = '';
+   };
 };
