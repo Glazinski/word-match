@@ -43,7 +43,7 @@ const lettersControl = () => {
    );
 
    elements.letterBoxes.map(box =>
-      box.addEventListener('click', e => letters.onLetterClick(e, state))
+      box.addEventListener('click', e => letters.onLetterClick(e.target, state))
    );
 };
 
@@ -99,14 +99,13 @@ const searchControll = async e => {
       // Clears timer and start it from the beginning
       clearInterval(state.time);
 
-      /****  DANGEROUS it changes state to
-      /**** its original form
+      //  DANGEROUS it changes state to
+      // its original form
       for (let key in state) {
          if (key !== 'points' && key !== 'time') {
             delete state[key];
          } else state[key] = 0;
       }
-      *****/
 
       /* CLEAR DOM */
 
@@ -116,9 +115,24 @@ const searchControll = async e => {
       base.clearWords();
 
       // Call function which clear the board
-      board.showResults()();
+      board.clearResults();
    }
 };
 
 elements.play.addEventListener('click', controlPlay);
 window.onclick = () => console.log('state: ', state);
+
+// Logic with key pressing
+document.addEventListener('keypress', event => {
+   // 1 - 49, ..., 4 - 52
+   // q - 113, w - 119, e - 101, r - 114
+   // a - 97, s - 115, d - 100, f - 102
+   // z - 122, x - 120, c - 99, v - 118
+   const { keyCode } = event;
+   const clickedLetter = document.getElementById(`${keyCode}`);
+
+   if (clickedLetter) letters.onLetterClick(clickedLetter, state);
+});
+
+// ONLY FOR TESTING
+controlPlay();

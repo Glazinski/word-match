@@ -10,7 +10,7 @@ export default class Board {
          console.log('Tablica pusta');
          // If word doesn't exist then remove it
          this.word = '';
-         this.point = '';
+         this.point = 0;
       } else {
          if (word === data[0].word) {
             // I want points and words to be in board not in result

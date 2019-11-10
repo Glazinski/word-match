@@ -1,14 +1,14 @@
 import { elements } from './base';
 
+elements.words = document.querySelector('.list__words');
+elements.points = document.querySelector('.list__points');
+elements.result = document.querySelector('.points-result');
+
 export const showResults = (word, point, points) => {
    //const wordMarkup = `<li>${word}</li>`;
    const wordMarkup = `<li>${word}</li>`;
 
    const pointMarkup = `<li>${point}</li>`;
-
-   elements.words = document.querySelector('.list__words');
-   elements.points = document.querySelector('.list__points');
-   elements.result = document.querySelector('.points-result');
 
    // Add word to board which was found in API
    elements.words.insertAdjacentHTML('beforeend', wordMarkup);
@@ -18,9 +18,10 @@ export const showResults = (word, point, points) => {
 
    // Returning function which delets
    // its conent
-   return () => {
-      elements.words.innerHTML = '';
-      elements.points.innerHTML = '';
-      elements.result.innerHTML = '';
-   };
+};
+
+export const clearResults = () => {
+   elements.words.innerHTML = '';
+   elements.points.innerHTML = '';
+   elements.result.innerHTML = '';
 };
