@@ -50,10 +50,8 @@ const lettersControl = () => {
 const searchControll = async e => {
    // If word that user has put is
    // longer than 3 characters then go
-
    e.preventDefault();
-   const { type } = e.target.dataset;
-   console.log(e.target.dataset);
+   const { type } = e.target.closest('.btn-control').dataset;
    if (type === 'enter') {
       if (state.userWord && state.userWord.length >= 3) {
          state.search = new Search(state.userWord);
@@ -128,10 +126,17 @@ document.addEventListener('keypress', event => {
    // q - 113, w - 119, e - 101, r - 114
    // a - 97, s - 115, d - 100, f - 102
    // z - 122, x - 120, c - 99, v - 118
-   const { keyCode } = event;
-   const clickedLetter = document.getElementById(`${keyCode}`);
+   const { key, keyCode } = event;
+   const clickedLetter = document.getElementById(
+      `${key.toLowerCase().charCodeAt(0)}`
+   );
 
    if (clickedLetter) letters.onLetterClick(clickedLetter, state);
+
+   // Toggle keymap
+   if (keyCode === 32) {
+      letters.addBindedKeys();
+   }
 });
 
 // ONLY FOR TESTING

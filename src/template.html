@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>words</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -26,8 +27,16 @@
 
 		<div class="game hidden">
 			<section class="section-control">
-				<button data-type="new-game" class="btn btn-control new-game">New Game</button>
-				<button data-type="home" class="btn btn-control">Home</button>
+				<button data-type="home" class="btn-icon btn-control">
+					<i class="material-icons">
+						home
+					</i>
+				</button>
+				<button data-type="new-game" class="btn-icon btn-control new-game">
+					<i class="material-icons">
+						autorenew
+					</i>
+				</button>
 			</section>
 
 			<section class="section-board">
@@ -39,7 +48,12 @@
 					<div class="section-board__item hint board-heading">
 						X
 					</div>
-					<h3 class="section-board__item board-heading">Points</h3>
+					<!-- <h3 class="section-board__item board-heading">Points</h3> -->
+
+					<div class="section-board__points">
+						<h3 class="board-heading">Points /&nbsp;</h3>
+						<h3 class="board-heading points-result"></h3>
+					</div>
 				</div>
 
 				<div class="section-board__list">
@@ -67,7 +81,7 @@
 
 				<div class="section-board__ur-word">
 					<div class="curent-word"></div>
-					<div class="points-result"></div>
+					<!-- <div class="points-result"></div> -->
 				</div>
 			</section>
 
@@ -79,7 +93,17 @@
 			<section class="section-letters">
 				<div class="section-letters__container">
 
-					<!-- <button class="btn btn-letter-box section-letters__letter-box">T</button>
+					<!-- <div class="letter-container">
+						<button class="btn btn-letter-box section-letters__letter-box">
+							T
+						</button>
+						<div class="binded-key">T</div>
+					</div> -->
+
+					<!-- <button class="btn btn-letter-box section-letters__letter-box">
+						T
+						<div class="binded-key">T</div>
+					</button>
 					<button class="btn btn-letter-box section-letters__letter-box">W</button>
 					<button class="btn btn-letter-box section-letters__letter-box">G</button>
 					<button class="btn btn-letter-box section-letters__letter-box">P</button>

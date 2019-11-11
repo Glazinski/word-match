@@ -1,5 +1,24 @@
 import { elements } from './base';
 
+const ids = [
+   '49',
+   '50',
+   '51',
+   '52',
+   '113',
+   '119',
+   '101',
+   '114',
+   '97',
+   '115',
+   '100',
+   '102',
+   '122',
+   '120',
+   '99',
+   '118'
+];
+
 let userWord = new Map();
 
 export const onLetterClick = (e, state) => {
@@ -7,8 +26,6 @@ export const onLetterClick = (e, state) => {
    const { id } = dataset;
 
    e.classList.toggle('btn-clicked');
-
-   console.log(e);
 
    if (userWord.has(id)) {
       userWord.delete(id);
@@ -32,25 +49,13 @@ export const clearLetters = () => {
    userWord.clear();
 };
 
+export const addBindedKeys = () => {
+   document
+      .querySelectorAll('.binded-key')
+      .forEach(key => key.classList.toggle('hidden'));
+};
+
 export const renderRandomLetters = () => {
-   const ids = [
-      '49',
-      '50',
-      '51',
-      '52',
-      '113',
-      '119',
-      '101',
-      '114',
-      '97',
-      '115',
-      '100',
-      '102',
-      '122',
-      '120',
-      '99',
-      '118'
-   ];
    const characters = 'LUCKY';
    const charArr = [...characters];
 
@@ -61,7 +66,16 @@ export const renderRandomLetters = () => {
    // RANDOM LETTER BOXES
    for (let i = 0; i < 16; i++) {
       let ran = charArr[Math.floor(Math.random() * charArr.length)];
-      buttonsMarkup += `<button id="${ids[i]}" data-id="${ids[i]}" class="btn btn-letter-box section-letters__letter-box">${ran}</button>`;
+      buttonsMarkup += `
+      <div class="letter-container">
+         <button id="${ids[i]}" data-id="${
+         ids[i]
+      }" class="btn btn-letter-box section-letters__letter-box">${ran}</button>
+         <span class="binded-key">${String.fromCharCode(
+            parseInt(ids[i])
+         )}</span>
+      </div>
+      `;
       // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
       //generatedLetters.push(ran);
    }
@@ -69,7 +83,7 @@ export const renderRandomLetters = () => {
    //return state => (state.allLetters = generatedLetters);
 };
 
-document.onclick = () => console.log(userWord);
+//document.onclick = () => console.log(userWord);
 
 // export const renderRandomLetters = () => {
 //    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
