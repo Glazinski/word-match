@@ -1,0 +1,17 @@
+.words::-webkit-scrollbar-track,
+.points::-webkit-scrollbar-track {
+   border-radius: 10px;
+   background-color: #f5f5f5;
+}
+
+.words::-webkit-scrollbar,
+.points::-webkit-scrollbar {
+   width: 1px;
+   background-color: $font-color;
+}
+
+.words::-webkit-scrollbar-thumb,
+.points::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: $secondary-color;
+}

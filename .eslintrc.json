@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["eslint:recommended", "airbnb-base"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "arrow-parens": ["error", "as-needed"],
+    // I HAVE TO CHANGE THESE 3 LATER
+    "function-paren-newline": 0,
+    "no-param-reassign": 0,
+    "implicit-arrow-linebreak": 0
+  }
+}

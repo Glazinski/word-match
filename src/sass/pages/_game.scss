@@ -1,11 +1,19 @@
 .section-control {
-   @include flexboxBetween;
+   &--1 {
+      @include flexboxAround;
+      height: 5vh;
+   }
+
+   &--2 {
+      @include flexboxBetween;
+      height: 5vh;
+   }
 }
 
 .section-board {
    @include flexboxColumn;
    width: 100%;
-   height: 300px;
+   height: 40vh;
    margin-top: 1rem;
 
    &__set {
@@ -29,7 +37,8 @@
    &__list {
       display: flex;
       width: 100%;
-      height: 200px;
+      // height: 200px;
+      height: 70%;
       font-size: $font-size-s;
       color: $font-color;
    }
@@ -60,14 +69,14 @@
    width: 70%;
    text-align: left;
    padding-left: 2rem;
-   overflow: scroll;
+   overflow-y: auto;
 }
 
 .points {
    width: 30%;
    text-align: center;
    border-left: 1px solid $font-color;
-   overflow: scroll;
+   overflow-y: auto;
 
    // &::after {
    //    content: '';
@@ -90,6 +99,7 @@
 
 .section-letters {
    width: 100%;
+   height: 30vh;
    margin-top: 2.5rem;
 
    &__container {
@@ -105,8 +115,10 @@
       position: relative;
       @include flexbox;
       margin: 0 auto;
-      width: 75px;
-      height: 75px;
+      // width: 75px;
+      // height: 75px;
+      width: 100%;
+      height: 100%;
       font-size: $font-size-m;
       background-color: $secondary-darker-light;
    }
@@ -114,6 +126,11 @@
 
 .letter-container {
    position: relative;
+   width: 7.5rem;
+   height: 7.5rem;
+   // width: 100%;
+   // height: 100%;
+   margin: 0 auto;
 }
 
 .binded-key {

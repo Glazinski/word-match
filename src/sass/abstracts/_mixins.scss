@@ -4,6 +4,12 @@
    align-items: center;
 }
 
+@mixin flexboxAround {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
 @mixin flexboxColumn {
    display: flex;
    justify-content: center;

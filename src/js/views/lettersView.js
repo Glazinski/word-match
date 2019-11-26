@@ -1,89 +1,85 @@
-import { elements } from './base';
-
-const ids = [
-   '49',
-   '50',
-   '51',
-   '52',
-   '113',
-   '119',
-   '101',
-   '114',
-   '97',
-   '115',
-   '100',
-   '102',
-   '122',
-   '120',
-   '99',
-   '118'
-];
+import { elements, isMobile } from './base';
 
 let userWord = new Map();
 
 export const onLetterClick = (e, state) => {
-   const { innerHTML, dataset } = e;
-   const { id } = dataset;
+  const { innerHTML, dataset } = e;
+  const { id } = dataset;
 
-   e.classList.toggle('btn-clicked');
+  e.classList.toggle('btn-clicked');
 
-   if (userWord.has(id)) {
-      userWord.delete(id);
-   } else {
-      userWord.set(id, innerHTML.toLowerCase());
-   }
+  if (userWord.has(id)) {
+    userWord.delete(id);
+  } else {
+    userWord.set(id, innerHTML.toLowerCase());
+  }
 
-   // Change Map to array join letters
-   // and return them to state
-   const concatedWord = Array.from(userWord.values()).join('');
+  // Change Map to array join letters
+  // and return them to state
+  const concatedWord = Array.from(userWord.values()).join('');
 
-   document.querySelector(
-      '.curent-word'
-   ).innerHTML = concatedWord.toUpperCase();
+  document.querySelector('.curent-word').innerHTML = concatedWord.toUpperCase();
 
-   return (state.userWord = concatedWord);
+  return (state.userWord = concatedWord);
 };
 
 export const clearLetters = () => {
-   document.querySelector('.curent-word').innerHTML = '';
-   userWord.clear();
+  document.querySelector('.curent-word').innerHTML = '';
+  userWord.clear();
 };
 
-export const addBindedKeys = () => {
-   document
-      .querySelectorAll('.binded-key')
-      .forEach(key => key.classList.toggle('hidden'));
+export const toggleBindedKeys = () => {
+  document.querySelectorAll('.binded-key').forEach(key => key.classList.toggle('hidden'));
 };
 
 export const renderRandomLetters = () => {
-   const characters = 'LUCKY';
-   const charArr = [...characters];
+  const characters = 'LUCKY';
+  const charArr = [...characters];
 
-   //const generatedLetters = [];
+  const ids = [
+    '49',
+    '50',
+    '51',
+    '52',
+    '113',
+    '119',
+    '101',
+    '114',
+    '97',
+    '115',
+    '100',
+    '102',
+    '122',
+    '120',
+    '99',
+    '118',
+  ];
 
-   let buttonsMarkup = '';
+  // const generatedLetters = [];
 
-   // RANDOM LETTER BOXES
-   for (let i = 0; i < 16; i++) {
-      let ran = charArr[Math.floor(Math.random() * charArr.length)];
-      buttonsMarkup += `
+  let buttonsMarkup = '';
+
+  // RANDOM LETTER BOXES
+  for (let i = 0; i < 16; i += 1) {
+    const bKey = isMobile ? 'hidden' : '';
+    const ran = charArr[Math.floor(Math.random() * charArr.length)];
+    buttonsMarkup += `
       <div class="letter-container">
-         <button id="${ids[i]}" data-id="${
-         ids[i]
-      }" class="btn btn-letter-box section-letters__letter-box">${ran}</button>
-         <span class="binded-key">${String.fromCharCode(
-            parseInt(ids[i])
-         )}</span>
+         <button id="${ids[i]}" data-id="${ids[i]}" 
+         class="btn btn-letter-box section-letters__letter-box">${ran}</button>
+         <span class="binded-key ${bKey}">
+            ${String.fromCharCode(parseInt(ids[i], 10))}
+         </span>
       </div>
       `;
-      // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
-      //generatedLetters.push(ran);
-   }
-   elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
-   //return state => (state.allLetters = generatedLetters);
+    // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
+    // generatedLetters.push(ran);
+  }
+  elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
+  // return state => (state.allLetters = generatedLetters);
 };
 
-//document.onclick = () => console.log(userWord);
+// document.onclick = () => console.log(userWord);
 
 // export const renderRandomLetters = () => {
 //    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
