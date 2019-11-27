@@ -1,6 +1,6 @@
 import { elements, isMobile } from './base';
 
-let userWord = new Map();
+const userWord = new Map();
 
 export const onLetterClick = (e, state) => {
   const { innerHTML, dataset } = e;
@@ -20,7 +20,8 @@ export const onLetterClick = (e, state) => {
 
   document.querySelector('.curent-word').innerHTML = concatedWord.toUpperCase();
 
-  return (state.userWord = concatedWord);
+  state.userWord = concatedWord;
+  return state.userWord;
 };
 
 export const clearLetters = () => {

@@ -1,8 +1,6 @@
 import '../main.scss';
-import { elements } from './views/base';
 import Search from './models/Search';
 import * as base from './views/base';
-import * as time from './views/timerView';
 import * as letters from './views/lettersView';
 import * as board from './views/boardView';
 import Board from './models/Board';
@@ -17,11 +15,10 @@ const lettersControl = () => {
   letters.renderRandomLetters();
 
   // ADD THESE ELEMENTS AFTER RENDER THEM TO elements object
-  elements.letterBoxes = Array.from(document.querySelectorAll('.btn-letter-box'));
+  base.elements.letterBoxes = Array.from(document.querySelectorAll('.btn-letter-box'));
 
-  elements.letterBoxes.forEach(box =>
-    box.addEventListener('click', e => letters.onLetterClick(e.target, state)),
-  );
+  base.elements.letterBoxes
+    .forEach(box => box.addEventListener('click', e => letters.onLetterClick(e.target, state)));
 };
 
 const searchControll = async e => {
@@ -36,7 +33,7 @@ const searchControll = async e => {
       try {
         await state.search.getWord();
 
-        elements.letterBoxes.forEach(box => {
+        base.elements.letterBoxes.forEach(box => {
           box.classList.remove('btn-clicked');
           box.style.pointerEvents = 'auto';
         });
@@ -91,7 +88,7 @@ const searchControll = async e => {
     /* CLEAR DOM */
 
     // Sets new time
-    state.time = time.countTime();
+    state.time = base.countTime();
 
     base.clearWords();
 
@@ -106,22 +103,21 @@ const controlPlay = () => {
   base.toggleGame();
 
   // TIME CONTROLLER
-  state.time = time.countTime();
+  state.time = base.countTime();
   // LETTERS CONTROL
   lettersControl();
 
   // SEARCH CONTROLL
 
-  Array.from(document.querySelectorAll('.btn-control')).map(item =>
-    item.addEventListener('click', searchControll),
-  );
+  Array.from(document.querySelectorAll('.btn-control'))
+    .map(item => item.addEventListener('click', searchControll));
   // elements.formControl.addEventListener('submit', e => {
   //    e.preventDefault();
   //    searchControll(e);
   // });
 };
 
-elements.play.addEventListener('click', controlPlay);
+base.elements.play.addEventListener('click', controlPlay);
 window.onclick = () => console.log('state: ', state);
 
 // Logic with key pressing

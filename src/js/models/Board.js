@@ -5,7 +5,7 @@ export default class Board {
 
   isWord() {
     const { data, word } = this.result;
-    if (data === undefined || data == 0) {
+    if (data === undefined || data.length === 0) {
       // DO SOMETHING if word won't be found
       console.log('Tablica pusta');
       // If word doesn't exist then remove it
