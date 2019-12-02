@@ -67,7 +67,9 @@ export const renderRandomLetters = () => {
     buttonsMarkup += `
       <div class="letter-container">
          <button id="${ids[i]}" data-id="${ids[i]}" 
-         class="btn btn-letter-box section-letters__letter-box">${ran}</button>
+         class="btn btn-letter-box section-letters__letter-box">
+          <span style="z-index: 10; pointer-events: none;">${ran}</span>
+         </button>
          <span class="binded-key ${bKey}">
             ${String.fromCharCode(parseInt(ids[i], 10))}
          </span>

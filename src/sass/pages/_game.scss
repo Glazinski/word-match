@@ -1,85 +1,102 @@
-.section-control {
-  &--1 {
-    @include flexboxAround;
-    height: 5vh;
-  }
+.main {
+   @include desktop {
+      display: flex;
+      margin: 10rem auto;
+      width: 85vw;
+      padding: 10rem 5rem;
+      align-items: center;
+      justify-content: center;
+      background-color: $bg-color;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
+   }
 
-  &--2 {
-    @include flexboxBetween;
-    height: 5vh;
-  }
+   @include desktop-xl {
+      width: 70vw;
+   }
+}
+
+.section-control {
+   &--1 {
+      @include flexboxAround;
+      height: 5vh;
+   }
+
+   &--2 {
+      @include flexboxBetween;
+      height: 5vh;
+   }
 }
 
 .section-board {
-  @include flexboxColumn;
-  width: 100%;
-  height: 40vh;
-  margin-top: 1rem;
+   @include flexboxColumn;
+   width: 100%;
+   height: 40vh;
+   margin-top: 1rem;
 
-  &__set {
-    @include flexbox;
-    justify-content: space-around;
-    width: 100%;
-    height: 50px;
-    border-bottom: 1px solid $font-color;
-  }
+   &__set {
+      @include flexbox;
+      justify-content: space-around;
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid $font-color;
+   }
 
-  &__item {
-    width: 23%;
-  }
+   &__item {
+      width: 23%;
+   }
 
-  &__points {
-    display: flex;
-    justify-content: center;
-    width: 30%;
-  }
-
-  &__list {
-    display: flex;
-    width: 100%;
-    // height: 200px;
-    height: 70%;
-    font-size: $font-size-s;
-    color: $font-color;
-
-    &__words {
-      width: 70%;
-      text-align: left;
-      padding-left: 2rem;
-      overflow-y: auto;
-    }
-
-    &__points {
+   &__points {
+      display: flex;
+      justify-content: center;
       width: 30%;
-      text-align: center;
-      border-left: 1px solid $font-color;
-      overflow-y: auto;
+   }
 
-      // &::after {
-      //    content: '';
-      //    position: absolute;
-      //    height: 5rem;
-      //    width: 1px;
-      //    background-color: $font-color;
-      // }
-    }
-  }
+   &__list {
+      display: flex;
+      width: 100%;
+      // height: 200px;
+      height: 70%;
+      font-size: $font-size-s;
+      color: $font-color;
 
-  &__ur-word {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 45px;
-  }
+      &__words {
+         width: 70%;
+         text-align: left;
+         padding-left: 2rem;
+         overflow-y: auto;
+      }
+
+      &__points {
+         width: 30%;
+         text-align: center;
+         border-left: 1px solid $font-color;
+         overflow-y: auto;
+
+         // &::after {
+         //    content: '';
+         //    position: absolute;
+         //    height: 5rem;
+         //    width: 1px;
+         //    background-color: $font-color;
+         // }
+      }
+   }
+
+   &__ur-word {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 45px;
+   }
 }
 
 .curent-word {
-  color: $font-color;
-  font-size: $font-size-s;
-  border: 1px solid $white-color;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
+   color: $font-color;
+   font-size: $font-size-s;
+   border: 1px solid $white-color;
+   border-radius: 4px;
+   padding: 0.5rem 1rem;
 }
 
 // .points-result {
@@ -88,72 +105,129 @@
 // }
 
 .list {
-  &__words {
-    margin-top: 2rem;
-  }
+   &__words {
+      margin-top: 2rem;
+   }
 
-  &__points {
-    margin-top: 2rem;
-  }
+   &__points {
+      margin-top: 2rem;
+   }
 }
+
+.game {
+   position: relative;
+   @include desktop {
+      width: 40vw;
+      max-width: 60rem;
+   }
+}
+
+// @include desktop {
+//    .game::before {
+//       content: '';
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 80vw;
+//       height: 60vh;
+//       background-color: grey;
+//       z-index: -10;
+//    }
+// }
 
 .section-letters {
-  margin-top: 4vh;
+   margin-top: 4vh;
 
-  &__container {
-    width: 100%;
-    height: 40vh;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 1rem;
-    justify-content: center;
-    align-items: center;
-  }
+   @include desktop {
+      width: 40vw;
+      max-width: 60rem;
+      margin-left: 6rem;
+   }
 
-  &__letter-box {
-    position: relative;
-    @include flexbox;
-    margin: 0 auto;
-    // width: 75px;
-    // height: 75px;
-    width: 100%;
-    height: 100%;
-    font-size: $font-size-m;
-    background-color: $secondary-darker-light;
-  }
+   @include desktop-xl {
+      margin-left: 12rem;
+   }
+
+   &__container {
+      width: 100%;
+      height: 40vh;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      grid-gap: 1rem;
+      justify-content: center;
+      align-items: center;
+   }
+
+   &__letter-box {
+      position: relative;
+      @include flexbox;
+      margin: 0 auto;
+      // width: 75px;
+      // height: 75px;
+      width: 100%;
+      height: 100%;
+      font-size: $font-size-m;
+      background-color: $secondary-darker-light;
+   }
 }
 
+// TODO
+// Optimized hover
+// .section-letters__letter-box {
+//    &::after {
+//       content: '';
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       // background-color: lighten($secondary-darker-light, 5%);
+//       box-shadow: 0 0 3rem rgba(0, 0, 0, 0.4);
+//       background-color: darken($secondary-darker-light, 6%);
+//       opacity: 0;
+//       transition: opacity 0.3s ease-in-out;
+//    }
+
+//    &:hover {
+//       cursor: pointer;
+
+//       &::after {
+//          opacity: 1;
+//       }
+//    }
+// }
+
 .letter-container {
-  position: relative;
-  // width: 7.5rem;
-  // height: 7.5rem;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
+   position: relative;
+   // width: 7.5rem;
+   // height: 7.5rem;
+   width: 100%;
+   height: 100%;
+   margin: 0 auto;
 }
 
 .binded-key {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 1rem;
-  padding: 0 0.2rem;
-  font-size: $font-size-default;
-  border: 1px solid $font-color;
-  border-radius: 5px;
-  pointer-events: none;
+   position: absolute;
+   bottom: 0.5rem;
+   right: 1rem;
+   padding: 0 0.2rem;
+   font-size: $font-size-default;
+   border: 1px solid $font-color;
+   border-radius: 5px;
+   pointer-events: none;
 }
 
 .section-howto {
-  // position: relative;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
+   // position: relative;
+   // top: 50%;
+   // left: 50%;
+   // transform: translate(-50%, -50%);
 
-  &__info-container {
-    width: 90%;
-    height: 500px;
-    margin: 0 auto;
-    border: 1px solid black;
-  }
+   &__info-container {
+      width: 90%;
+      height: 500px;
+      margin: 0 auto;
+      border: 1px solid black;
+   }
 }

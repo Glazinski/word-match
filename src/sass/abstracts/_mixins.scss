@@ -23,3 +23,21 @@
    justify-content: space-between;
    align-items: center;
 }
+
+@mixin tablet {
+   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+      @content;
+   }
+}
+
+@mixin desktop {
+   @media (min-width: #{$desktop-width}) {
+      @content;
+   }
+}
+
+@mixin desktop-xl {
+   @media (min-width: #{$desktop-xl-width}) {
+      @content;
+   }
+}

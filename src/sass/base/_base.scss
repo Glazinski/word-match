@@ -15,4 +15,8 @@ html {
 body {
    background-color: $bg-color;
    color: $font-color;
+
+   @include desktop {
+      background-color: $secondary-darker-light;
+   }
 }

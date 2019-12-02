@@ -29,11 +29,21 @@
       width: 14rem;
       height: 4rem;
       font-size: $font-size-s;
+      box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.6);
+
+      @include desktop {
+         width: 15rem;
+         height: 5rem;
+      }
    }
 
    &--cancel {
       background-color: $red-color;
    }
+}
+
+.btn-control:hover {
+   cursor: pointer;
 }
 
 .btn-clicked {
@@ -47,5 +57,9 @@
 
    i {
       font-size: 4rem !important;
+
+      @include desktop {
+         font-size: 5rem !important;
+      }
    }
 }
