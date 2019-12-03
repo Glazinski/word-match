@@ -6,12 +6,17 @@ export const onLetterClick = (e, state) => {
   const { innerHTML, dataset } = e;
   const { id } = dataset;
 
+  // It changes span which is string
+  // to dom element
+  const doc = new DOMParser().parseFromString(innerHTML, 'text/xml');
+  const singleLetter = doc.firstChild.innerHTML;
+
   e.classList.toggle('btn-clicked');
 
   if (userWord.has(id)) {
     userWord.delete(id);
   } else {
-    userWord.set(id, innerHTML.toLowerCase());
+    userWord.set(id, singleLetter.toLowerCase());
   }
 
   // Change Map to array join letters
@@ -33,7 +38,7 @@ export const toggleBindedKeys = () => {
   document.querySelectorAll('.binded-key').forEach(key => key.classList.toggle('hidden'));
 };
 
-export const renderRandomLetters = () => {
+export const renderRandomLetters = state => {
   const characters = 'LUCKY';
   const charArr = [...characters];
 
@@ -56,7 +61,7 @@ export const renderRandomLetters = () => {
     '118',
   ];
 
-  // const generatedLetters = [];
+  const generatedLetters = [];
 
   let buttonsMarkup = '';
 
@@ -68,18 +73,18 @@ export const renderRandomLetters = () => {
       <div class="letter-container">
          <button id="${ids[i]}" data-id="${ids[i]}" 
          class="btn btn-letter-box section-letters__letter-box">
-          <span style="z-index: 10; pointer-events: none;">${ran}</span>
+          <span id="test" class="above-freeze">${ran}</span>
          </button>
-         <span class="binded-key ${bKey}">
-            ${String.fromCharCode(parseInt(ids[i], 10))}
-         </span>
+         <span class="binded-key ${bKey}">${String.fromCharCode(parseInt(ids[i], 10))}</span>
       </div>
       `;
     // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
-    // generatedLetters.push(ran);
+    generatedLetters.push(ran);
   }
   elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
   // return state => (state.allLetters = generatedLetters);
+  state.allLetters = generatedLetters;
+  return state;
 };
 
 // document.onclick = () => console.log(userWord);

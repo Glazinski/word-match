@@ -4,15 +4,17 @@ import * as base from './views/base';
 import * as letters from './views/lettersView';
 import * as board from './views/boardView';
 import Board from './models/Board';
+import Hint from './models/Hint';
 
 const state = {
   listOfWords: [],
   allPoints: [],
+  allLetters: [],
 };
 
 const lettersControl = () => {
   // RENDER RANDOM LETTER BOXES
-  letters.renderRandomLetters();
+  letters.renderRandomLetters(state);
 
   // ADD THESE ELEMENTS AFTER RENDER THEM TO elements object
   base.elements.letterBoxes = Array.from(document.querySelectorAll('.btn-letter-box'));
@@ -97,6 +99,12 @@ const searchControll = async e => {
   }
 };
 
+// HINT Control
+const hintControl = () => {
+  state.test = new Hint(state.allLetters);
+  state.test.getLetter();
+};
+
 // PLAY CONTROLLER
 const controlPlay = () => {
   // START GAME
@@ -115,6 +123,10 @@ const controlPlay = () => {
   //    e.preventDefault();
   //    searchControll(e);
   // });
+
+  // HINT Control
+  base.elements.hint = document.querySelector('.hint');
+  base.elements.hint.addEventListener('click', hintControl);
 };
 
 base.elements.play.addEventListener('click', controlPlay);

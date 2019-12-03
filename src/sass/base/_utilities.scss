@@ -9,3 +9,9 @@
 .freeze {
    pointer-events: none;
 }
+
+.above-freeze {
+   position: relative;
+   pointer-events: none;
+   z-index: 100;
+}
