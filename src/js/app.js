@@ -10,6 +10,7 @@ const state = {
   listOfWords: [],
   allPoints: [],
   allLetters: [],
+  hintAttempts: 4,
 };
 
 const lettersControl = () => {
@@ -17,7 +18,7 @@ const lettersControl = () => {
   letters.renderRandomLetters(state);
 
   // ADD THESE ELEMENTS AFTER RENDER THEM TO elements object
-  base.elements.letterBoxes = Array.from(document.querySelectorAll('.btn-letter-box'));
+  base.elements.letterBoxes = [...document.querySelectorAll('.btn-letter-box')];
 
   base.elements.letterBoxes
     .forEach(box => box.addEventListener('click', e => letters.onLetterClick(e.target, state)));
@@ -100,9 +101,33 @@ const searchControll = async e => {
 };
 
 // HINT Control
-const hintControl = () => {
-  state.test = new Hint(state.allLetters);
-  state.test.getLetter();
+const hintControl = async () => {
+  try {
+    // If user has used all hints
+    // then more hints are blocked
+    if (state.hintAttempts !== 0) {
+      state.hintAttempts -= 1;
+      // Only if there is no word from Hint
+      // generate new Hint
+      if (!state.hint || state.hint.data.length === 0) {
+        state.hint = new Hint(state.allLetters);
+        await state.hint.getLetter();
+      }
+
+      [...document.querySelectorAll('.letter')].some(el => {
+        if (el.innerHTML === state.hint.data[0].toUpperCase()) {
+          el.parentNode.click();
+          state.hint.data = state.hint.data.substr(1);
+          state.hint.attempts -= 1;
+          return true;
+        }
+      });
+
+      if (state.hint.attempts === 0) document.querySelector('.btn-control--enter').click();
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // PLAY CONTROLLER
@@ -117,7 +142,7 @@ const controlPlay = () => {
 
   // SEARCH CONTROLL
 
-  Array.from(document.querySelectorAll('.btn-control'))
+  [...document.querySelectorAll('.btn-control')]
     .map(item => item.addEventListener('click', searchControll));
   // elements.formControl.addEventListener('submit', e => {
   //    e.preventDefault();

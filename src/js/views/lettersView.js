@@ -39,7 +39,8 @@ export const toggleBindedKeys = () => {
 };
 
 export const renderRandomLetters = state => {
-  const characters = 'LUCKY';
+  // const characters = 'LUCKY';
+  const characters = 'UUUNIT';
   const charArr = [...characters];
 
   const ids = [
@@ -73,7 +74,7 @@ export const renderRandomLetters = state => {
       <div class="letter-container">
          <button id="${ids[i]}" data-id="${ids[i]}" 
          class="btn btn-letter-box section-letters__letter-box">
-          <span id="test" class="above-freeze">${ran}</span>
+          <span id="letter" class="above-freeze letter">${ran}</span>
          </button>
          <span class="binded-key ${bKey}">${String.fromCharCode(parseInt(ids[i], 10))}</span>
       </div>
