@@ -17,7 +17,9 @@ export default class Hint {
       // Returns one word that is longer than
       // 3 characters
       // this.data = res.data.find(({ word }) => word.length > 3);
-      const data = res.data.find(({ word }) => word.length > 3);
+      const data = res.data.filter(({ word }) => word.length > 3);
+      const ranWord = data[Math.floor(Math.random() * data.length)].word;
+      console.log(data, ranWord);
 
       // Checks if letters generated on board
       // are included in the word from Hint
@@ -34,6 +36,7 @@ export default class Hint {
         this.attempts = data.word.length;
         this.data = data.word;
       }
+      // else this.getLetter();
     } catch (err) {
       console.log(err);
     }

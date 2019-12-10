@@ -19,9 +19,9 @@
 					<h1 class="heading-title__title">Game based on wordshake</h1>
 				</div>
 
-				<button class="btn btn-menu btn-menu--1">Play</button>
+				<button class="btn btn-menu btn-menu--1"><span class="above-freeze">Play</span></button>
 
-				<button class="btn btn-menu btn-menu--2">How to play</button>
+				<button class="btn btn-menu btn-menu--2"><span class="above-freeze">How to play</span></button>
 			</div>
 		</section>
 
@@ -45,8 +45,9 @@
 					<div class="section-board__item board-time">
 						<span class="timer">3:00</span>
 					</div>
-					<div class="section-board__item hint board-heading">
-						X
+					<!-- Temporarily disabled -->
+					<div class="section-board__item hint board-heading" style="pointer-events: none;">
+						&nbsp;
 					</div>
 					<!-- <h3 class="section-board__item board-heading">Points</h3> -->
 
@@ -95,48 +96,95 @@
 			</form>
 		</div>
 
-		<section class="section-letters">
+		<!-- <section class="section-letters">
 			<div class="section-letters__container">
 
-				<!-- <div class="letter-container">
-						<button class="btn btn-letter-box section-letters__letter-box">
-							T
-						</button>
-						<div class="binded-key">T</div>
-					</div> -->
+			<div class="letter-container">
+				<button class="btn btn-letter-box section-letters__letter-box">
+					T
+				</button>
+				<div class="binded-key">T</div>
+			</div>
 
-				<!-- <button class="btn btn-letter-box section-letters__letter-box">
-						T
-						<div class="binded-key">T</div>
-					</button>
-					<button class="btn btn-letter-box section-letters__letter-box">W</button>
-					<button class="btn btn-letter-box section-letters__letter-box">G</button>
-					<button class="btn btn-letter-box section-letters__letter-box">P</button>
-
-
-					<button class="btn btn-letter-box section-letters__letter-box">T</button>
-					<button class="btn btn-letter-box section-letters__letter-box">W</button>
-					<button class="btn btn-letter-box section-letters__letter-box">G</button>
-					<button class="btn btn-letter-box section-letters__letter-box">P</button>
-
-					<button class="btn btn-letter-box section-letters__letter-box">T</button>
-					<button class="btn btn-letter-box section-letters__letter-box">W</button>
-					<button class="btn btn-letter-box section-letters__letter-box">G</button>
-					<button class="btn btn-letter-box section-letters__letter-box">P</button>
+			<button class="btn btn-letter-box section-letters__letter-box">
+				T
+				<div class="binded-key">T</div>
+			</button>
+			<button class="btn btn-letter-box section-letters__letter-box">W</button>
+			<button class="btn btn-letter-box section-letters__letter-box">G</button>
+			<button class="btn btn-letter-box section-letters__letter-box">P</button>
 
 
-					<button class="btn btn-letter-box section-letters__letter-box">T</button>
-					<button class="btn btn-letter-box section-letters__letter-box">W</button>
-					<button class="btn btn-letter-box section-letters__letter-box">G</button>
-					<button class="btn btn-letter-box section-letters__letter-box">P</button> -->
+			<button class="btn btn-letter-box section-letters__letter-box">T</button>
+			<button class="btn btn-letter-box section-letters__letter-box">W</button>
+			<button class="btn btn-letter-box section-letters__letter-box">G</button>
+			<button class="btn btn-letter-box section-letters__letter-box">P</button>
+
+			<button class="btn btn-letter-box section-letters__letter-box">T</button>
+			<button class="btn btn-letter-box section-letters__letter-box">W</button>
+			<button class="btn btn-letter-box section-letters__letter-box">G</button>
+			<button class="btn btn-letter-box section-letters__letter-box">P</button>
+
+
+			<button class="btn btn-letter-box section-letters__letter-box">T</button>
+			<button class="btn btn-letter-box section-letters__letter-box">W</button>
+			<button class="btn btn-letter-box section-letters__letter-box">G</button>
+			<button class="btn btn-letter-box section-letters__letter-box">P</button>
 
 			</div>
-		</section>
+		</section> -->
 
 
 		<section class="section-howto hidden">
 			<div class="section-howto__info-container">
+				<button data-type="home" class="btn-icon btn-control" onclick="location.reload()">
+					<i class="material-icons">
+						home
+					</i>
+				</button>
 
+				<article class="article">
+					<h2 class="heading">Generally</h2>
+					<p class="inner-text">
+						Game starts on the board which
+						has 16 fields and each field has its
+						letter. Your job is to find as many
+						words as possible with these
+						letters. Word has to be longer
+						than three characters. You can't enter
+						the same word twice.
+					</p>
+				</article>
+
+				<article class="article">
+					<h2 class="heading">Points</h2>
+					<p class="inner-text">
+						Points depend on length of the word
+						the player has combined.
+						The pattern looks like this:
+						(Length of the word / 2) - 1) rounded up
+
+					</p>
+				</article>
+
+				<article class="article">
+					<h2 class="heading">Controls</h2>
+					<p class="inner-text">
+						Spacebar (use when game starts) - Shows keymap
+					</p>
+				</article>
+
+				<article class="article">
+					<h2 class="heading">Otherwise</h2>
+					<p class="inner-text">
+						I use Datamuse API for searching words.
+						This game is based on <i>Wordshake</i> published
+						by British Council and <br />
+						<i>Słowotok</i> published by SpringLabs. <br />
+						<strong>Game was made only for practice and fun!!</strong>
+						It is completely non-profit.
+					</p>
+				</article>
 			</div>
 		</section>
 

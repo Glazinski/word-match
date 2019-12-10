@@ -82,7 +82,18 @@ export const renderRandomLetters = state => {
     // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
     generatedLetters.push(ran);
   }
-  elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
+  const lettersSection = `
+    <section class="section-letters">
+      <div class="section-letters__container">
+        ${buttonsMarkup}
+      </div>
+
+      
+    </section>
+  `;
+  // <div class="warning-rule hidden"></div>
+  // elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
+  elements.game.insertAdjacentHTML('afterend', lettersSection);
   // return state => (state.allLetters = generatedLetters);
   state.allLetters = generatedLetters;
   return state;

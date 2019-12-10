@@ -60,6 +60,11 @@ const searchControll = async e => {
 
           // Result after user's input
           board.showResults(word, point, state.allPoints);
+        } else {
+          // If the same word has been entered
+          // more than once show warning message
+          const msg = 'You cannot enter the same word';
+          base.showWarning(msg);
         }
       } catch (err) {
         console.log(err);
@@ -118,12 +123,12 @@ const hintControl = async () => {
         if (el.innerHTML === state.hint.data[0].toUpperCase()) {
           el.parentNode.click();
           state.hint.data = state.hint.data.substr(1);
-          state.hint.attempts -= 1;
+          // state.hint.attempts -= 1;
           return true;
         }
       });
 
-      if (state.hint.attempts === 0) document.querySelector('.btn-control--enter').click();
+      if (state.hint.data.length === 0) document.querySelector('.btn-control--enter').click();
     }
   } catch (err) {
     console.log(err);
@@ -141,21 +146,13 @@ const controlPlay = () => {
   lettersControl();
 
   // SEARCH CONTROLL
-
   [...document.querySelectorAll('.btn-control')]
     .map(item => item.addEventListener('click', searchControll));
-  // elements.formControl.addEventListener('submit', e => {
-  //    e.preventDefault();
-  //    searchControll(e);
-  // });
 
   // HINT Control
   base.elements.hint = document.querySelector('.hint');
   base.elements.hint.addEventListener('click', hintControl);
 };
-
-base.elements.play.addEventListener('click', controlPlay);
-window.onclick = () => console.log('state: ', state);
 
 // Logic with key pressing
 document.addEventListener('keypress', event => {
@@ -176,5 +173,12 @@ document.addEventListener('keypress', event => {
   }
 });
 
-// ONLY FOR TESTING
+base.elements.play.addEventListener('click', controlPlay);
 controlPlay();
+// HOWTO
+base.elements.howtoBtn.addEventListener('click', () => {
+  base.elements.menu.classList.toggle('hidden');
+  base.elements.howto.classList.toggle('hidden');
+});
+
+window.onclick = () => console.log('state: ', state);

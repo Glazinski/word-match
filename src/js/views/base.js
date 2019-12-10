@@ -5,27 +5,30 @@ export const elements = {
   game: document.querySelector('.game'),
   menu: document.querySelector('.section-menu'),
   play: document.querySelector('.btn-menu--1'),
+  howtoBtn: document.querySelector('.btn-menu--2'),
   timer: document.querySelector('.timer'),
   lettersContainer: document.querySelector('.section-letters__container'),
   // letterBoxes: Array.from(document.querySelectorAll('.btn-letter-box')),
   formControl: document.querySelector('.form-control'),
+  howto: document.querySelector('.section-howto'),
 };
 
 export const countTime = () => {
+  elements.timer.style.color = '#90ee90';
   elements.timer.innerHTML = '3:00';
   let min = 2;
   let sec = 60;
   let zero = '';
 
   const timer = setInterval(() => {
-    if (sec <= 10) {
-      zero = '0';
-    } else zero = '';
-
     if (sec === 0) {
       min -= 1;
       sec = 60;
     }
+
+    if (sec <= 10) {
+      zero = '0';
+    } else zero = '';
 
     sec -= 1;
 
@@ -36,10 +39,6 @@ export const countTime = () => {
 
     if (sec <= 15 && min === 0) {
       elements.timer.style.color = '#c73333';
-    }
-
-    if (min === 0 && sec === 0) {
-      // END THE GAME
     }
 
     elements.timer.innerHTML = `${min}:${zero}${sec}`;
@@ -68,3 +67,16 @@ export const newGame = () => {
 };
 
 export const isMobile = () => (!(window.innerWidth > 768));
+
+export const showWarning = warning => {
+  const testMarkup = `
+    <div class="warning-rule ">${warning}</div>
+  `;
+
+  document.querySelector('.section-letters').insertAdjacentHTML('beforeend', testMarkup);
+
+  setTimeout(() => {
+    document.querySelector('.warning-rule').remove();
+  }, 2500);
+};
+

@@ -6,6 +6,7 @@
    @include flexbox;
    width: 100%;
    margin-top: 4.8rem;
+   padding: 3rem 0;
 
    &__container {
       @include flexboxColumn;

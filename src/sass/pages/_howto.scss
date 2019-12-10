@@ -1,0 +1,23 @@
+.section-howto {
+   padding: 1rem;
+
+   &__info-container {
+      margin: 0 auto;
+   }
+}
+
+.article {
+   border-bottom: 1px solid $white-color;
+   padding-bottom: 1.5rem;
+}
+
+.heading {
+   font-size: $font-size-m;
+   margin: 1rem 0;
+}
+
+.inner-text {
+   font-size: $font-size-default;
+   line-height: 130%;
+   letter-spacing: 1px;
+}

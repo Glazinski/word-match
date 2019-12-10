@@ -136,6 +136,7 @@
 // }
 
 .section-letters {
+   position: relative;
    margin-top: 4vh;
 
    @include desktop {
@@ -157,6 +158,10 @@
       grid-gap: 1rem;
       justify-content: center;
       align-items: center;
+
+      :hover {
+         cursor: pointer;
+      }
    }
 
    &__letter-box {
@@ -218,16 +223,22 @@
    pointer-events: none;
 }
 
-.section-howto {
-   // position: relative;
-   // top: 50%;
-   // left: 50%;
-   // transform: translate(-50%, -50%);
+.warning-rule {
+   position: fixed;
+   width: auto;
+   text-align: center;
+   padding: 0.7rem;
+   border-radius: 4px;
+   background-color: $red-color;
+   font-size: $font-size-default;
+   top: 10px;
+   left: 50%;
+   transform: translateX(-50%);
+   z-index: 20;
 
-   &__info-container {
-      width: 90%;
-      height: 500px;
-      margin: 0 auto;
-      border: 1px solid black;
+   @include desktop {
+      position: absolute;
+      top: auto;
+      bottom: -7rem;
    }
 }
