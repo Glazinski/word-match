@@ -8,7 +8,6 @@ export const elements = {
   howtoBtn: document.querySelector('.btn-menu--2'),
   timer: document.querySelector('.timer'),
   lettersContainer: document.querySelector('.section-letters__container'),
-  // letterBoxes: Array.from(document.querySelectorAll('.btn-letter-box')),
   formControl: document.querySelector('.form-control'),
   howto: document.querySelector('.section-howto'),
 };
@@ -68,15 +67,21 @@ export const newGame = () => {
 
 export const isMobile = () => (!(window.innerWidth > 768));
 
-export const showWarning = warning => {
-  const testMarkup = `
-    <div class="warning-rule ">${warning}</div>
+export const showWarning = msg => {
+  if (!document.querySelector('.warning-rule')) {
+    const testMarkup = `
+    <div class="warning-rule">${msg}</div>
   `;
 
-  document.querySelector('.section-letters').insertAdjacentHTML('beforeend', testMarkup);
+    document.querySelector('.section-letters').insertAdjacentHTML('beforeend', testMarkup);
 
-  setTimeout(() => {
-    document.querySelector('.warning-rule').remove();
-  }, 2500);
+    const warning = document.querySelector('.warning-rule');
+
+    gsap.from(warning, 0.5, { opacity: 0, y: -20 });
+    gsap.to(warning, 0.5, { opacity: 0, y: -20, delay: 2 });
+
+    setTimeout(() => {
+      warning.remove();
+    }, 2500);
+  }
 };
-

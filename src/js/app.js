@@ -20,6 +20,8 @@ const lettersControl = () => {
   // ADD THESE ELEMENTS AFTER RENDER THEM TO elements object
   base.elements.letterBoxes = [...document.querySelectorAll('.btn-letter-box')];
 
+  gsap.to('.btn-letter-box', 0.8, { rotation: 360, transformOrigin: '50% 50%' });
+
   base.elements.letterBoxes
     .forEach(box => box.addEventListener('click', e => letters.onLetterClick(e.target, state)));
 };
@@ -37,7 +39,12 @@ const searchControll = async e => {
         await state.search.getWord();
 
         base.elements.letterBoxes.forEach(box => {
-          box.classList.remove('btn-clicked');
+          // box.classList.remove('btn-clicked');
+          gsap.to(box, 0.2, {
+            opacity: 1,
+            backgroundColor: '#535353',
+            boxShadow: 'none',
+          });
           box.style.pointerEvents = 'auto';
         });
         // Clear userWord from state
@@ -69,7 +76,10 @@ const searchControll = async e => {
       } catch (err) {
         console.log(err);
       }
-    } else console.log('word is shorter than 3 char');
+    } else {
+      const msg = 'Word has to be longer than 3 characters';
+      base.showWarning(msg);
+    }
   } else if (type === 'cancel') {
     base.clearWords();
     state.userWord = '';
@@ -79,7 +89,7 @@ const searchControll = async e => {
     // Clears timer and starts it from the beginning
     clearInterval(state.time);
 
-    //  DANGEROUS it changes state to
+    //  DANGEROUS it cleares state
     // its original form
     //  for (const key in state) {
     //    if (key !== 'points' && key !== 'time') {
