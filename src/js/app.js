@@ -4,7 +4,6 @@ import * as base from './views/base';
 import * as letters from './views/lettersView';
 import * as board from './views/boardView';
 import Board from './models/Board';
-import Hint from './models/Hint';
 
 const state = {
   listOfWords: [],
@@ -12,6 +11,8 @@ const state = {
   allLetters: [],
   hintAttempts: 4,
 };
+
+export default state;
 
 const lettersControl = () => {
   // RENDER RANDOM LETTER BOXES
@@ -26,6 +27,20 @@ const lettersControl = () => {
     .forEach(box => box.addEventListener('click', e => letters.onLetterClick(e.target, state)));
 };
 
+// It will run game after restart
+window.onload = () => {
+  const reloading = sessionStorage.getItem('reloading');
+  if (reloading) {
+    sessionStorage.removeItem('reloading');
+    controlPlay();
+  }
+};
+
+const restartGame = () => {
+  sessionStorage.setItem('reloading', 'true');
+  document.location.reload();
+};
+
 const searchControll = async e => {
   // If word that user has put is
   // longer than 3 characters then go
@@ -37,16 +52,7 @@ const searchControll = async e => {
 
       try {
         await state.search.getWord();
-
-        base.elements.letterBoxes.forEach(box => {
-          // box.classList.remove('btn-clicked');
-          gsap.to(box, 0.2, {
-            opacity: 1,
-            backgroundColor: '#535353',
-            boxShadow: 'none',
-          });
-          box.style.pointerEvents = 'auto';
-        });
+        base.clearWords();
         // Clear userWord from state
         state.userWord = '';
         // Clear Map with letters and
@@ -77,71 +83,17 @@ const searchControll = async e => {
         console.log(err);
       }
     } else {
-      const msg = 'Word has to be longer than 3 characters';
+      const msg = 'Word has to be longer than 2 characters';
       base.showWarning(msg);
     }
   } else if (type === 'cancel') {
     base.clearWords();
     state.userWord = '';
   } else if (type === 'home') {
-    window.location.reload(true);
+    document.location.reload();
   } else if (type === 'new-game') {
-    // Clears timer and starts it from the beginning
-    clearInterval(state.time);
-
-    //  DANGEROUS it cleares state
-    // its original form
-    //  for (const key in state) {
-    //    if (key !== 'points' && key !== 'time') {
-    //      delete state[key];
-    //    } else state[key] = 0;
-    //  }
-
-    Object.keys(state).forEach(key => {
-      if (key !== 'points' && key !== 'time') {
-        delete state[key];
-      } else state[key] = 0;
-    });
-
-    /* CLEAR DOM */
-
-    // Sets new time
-    state.time = base.countTime();
-
-    base.clearWords();
-
-    // Call function which clear the board
-    board.clearResults();
-  }
-};
-
-// HINT Control
-const hintControl = async () => {
-  try {
-    // If user has used all hints
-    // then more hints are blocked
-    if (state.hintAttempts !== 0) {
-      state.hintAttempts -= 1;
-      // Only if there is no word from Hint
-      // generate new Hint
-      if (!state.hint || state.hint.data.length === 0) {
-        state.hint = new Hint(state.allLetters);
-        await state.hint.getLetter();
-      }
-
-      [...document.querySelectorAll('.letter')].some(el => {
-        if (el.innerHTML === state.hint.data[0].toUpperCase()) {
-          el.parentNode.click();
-          state.hint.data = state.hint.data.substr(1);
-          // state.hint.attempts -= 1;
-          return true;
-        }
-      });
-
-      if (state.hint.data.length === 0) document.querySelector('.btn-control--enter').click();
-    }
-  } catch (err) {
-    console.log(err);
+    // Reload page and start game
+    restartGame();
   }
 };
 
@@ -160,9 +112,40 @@ const controlPlay = () => {
     .map(item => item.addEventListener('click', searchControll));
 
   // HINT Control
-  base.elements.hint = document.querySelector('.hint');
-  base.elements.hint.addEventListener('click', hintControl);
+  // base.elements.hint = document.querySelector('.hint');
+  // base.elements.hint.addEventListener('click', hintControl);
 };
+
+// HINT Control
+// TODO int the future
+// const hintControl = async () => {
+//   try {
+//     // If user has used all hints
+//     // then more hints are blocked
+//     if (state.hintAttempts !== 0) {
+//       state.hintAttempts -= 1;
+//       // Only if there is no word from Hint
+//       // generate new Hint
+//       if (!state.hint || state.hint.data.length === 0) {
+//         state.hint = new Hint(state.allLetters);
+//         await state.hint.getLetter();
+//       }
+
+//       [...document.querySelectorAll('.letter')].some(el => {
+//         if (el.innerHTML === state.hint.data[0].toUpperCase()) {
+//           el.parentNode.click();
+//           state.hint.data = state.hint.data.substr(1);
+//           // state.hint.attempts -= 1;
+//           return true;
+//         }
+//       });
+
+//       if (state.hint.data.length === 0) document.querySelector('.btn-control--enter').click();
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 // Logic with key pressing
 document.addEventListener('keypress', event => {

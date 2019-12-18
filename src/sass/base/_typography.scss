@@ -16,6 +16,12 @@ body {
 .board-heading {
    font-size: $font-size-s;
    font-weight: 400;
+
+   &--2 {
+      color: $end-color;
+      font-weight: 400;
+      font-size: $font-size-l;
+   }
 }
 
 .timer {
@@ -25,4 +31,17 @@ body {
 
 .list {
    list-style: none;
+}
+
+.end-header {
+   width: 90%;
+   border-bottom: 1px solid white;
+   margin: 3rem auto 0 auto;
+   padding-bottom: 1rem;
+
+   h3 {
+      color: $end-color;
+      font-size: $font-size-l;
+      font-weight: 400;
+   }
 }

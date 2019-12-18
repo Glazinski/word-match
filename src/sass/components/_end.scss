@@ -1,0 +1,12 @@
+.end-score {
+   position: fixed;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: $primary-color;
+   width: 90%;
+   height: 50vh;
+   z-index: 110;
+   border-radius: 4px;
+   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
+}

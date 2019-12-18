@@ -11,9 +11,15 @@
 
 <body>
 
-	<main class="main">
+	<div class="end-score hidden">
+		<div class="end-header">
+			<h3>Points: <span class="end-sum-score">54</span></h3>
+		</div>
+	</div>
 
-		<div class="score"></div>
+	<!-- <div class="end"></div> -->
+
+	<main class="main">
 
 		<section class="section-menu">
 			<div class="section-menu__container">
@@ -139,7 +145,7 @@
 
 		<section class="section-howto hidden">
 			<div class="section-howto__info-container">
-				<button data-type="home" class="btn-icon btn-control" onclick="location.reload()">
+				<button data-type="home" class="btn-icon btn-control" onclick="document.location.reload();">
 					<i class="material-icons">
 						home
 					</i>

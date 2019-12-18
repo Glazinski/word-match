@@ -103,11 +103,19 @@
    background-color: transparent;
    border: none;
 
+   &--2 {
+      color: $end-color;
+   }
+
    i {
       font-size: 4rem !important;
 
       @include desktop {
          font-size: 5rem !important;
       }
+   }
+
+   &:hover {
+      cursor: pointer;
    }
 }

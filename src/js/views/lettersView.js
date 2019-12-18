@@ -126,14 +126,9 @@ export const renderRandomLetters = state => {
       <div class="section-letters__container">
         ${buttonsMarkup}
       </div>
-
-      
     </section>
   `;
-  // <div class="warning-rule hidden"></div>
-  // elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
   elements.game.insertAdjacentHTML('afterend', lettersSection);
-  // return state => (state.allLetters = generatedLetters);
   state.allLetters = generatedLetters;
   return state;
 };

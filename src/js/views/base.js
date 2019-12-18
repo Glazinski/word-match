@@ -1,4 +1,5 @@
 import { clearLetters } from './lettersView';
+import endGame from './endView';
 // import countTime from './timerView';
 
 export const elements = {
@@ -34,6 +35,7 @@ export const countTime = () => {
     // WHEN TIME ENDS
     if (sec === 0 && min === 0) {
       clearInterval(timer);
+      endGame();
     }
 
     if (sec <= 15 && min === 0) {
@@ -41,7 +43,7 @@ export const countTime = () => {
     }
 
     elements.timer.innerHTML = `${min}:${zero}${sec}`;
-  }, 1000);
+  }, 50);
 
   return timer;
 };
@@ -55,7 +57,11 @@ export const clearWords = () => {
   clearLetters();
 
   elements.letterBoxes.forEach(box => {
-    box.classList.remove('btn-clicked');
+    gsap.to(box, 0.2, {
+      opacity: 1,
+      backgroundColor: '#535353',
+      boxShadow: 'none',
+    });
     box.style.pointerEvents = 'auto';
   });
 };
