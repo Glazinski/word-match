@@ -25,23 +25,12 @@
       @include flexboxBetween;
       height: 5vh;
    }
-
-   &--3 {
-      @include flexboxBetween;
-      margin: 2rem auto 0 auto;
-      height: 5vh;
-      width: 80%;
-   }
-}
-
-.section-board--2 {
-   height: 45vh;
 }
 
 .section-board {
    @include flexboxColumn;
    width: 100%;
-   height: 40vh;
+   height: 39vh;
    margin-top: 1rem;
 
    &__set {
