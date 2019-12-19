@@ -175,5 +175,3 @@ base.elements.howtoBtn.addEventListener('click', () => {
   base.elements.menu.classList.toggle('hidden');
   base.elements.howto.classList.toggle('hidden');
 });
-
-window.onclick = () => console.log('state: ', state);

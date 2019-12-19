@@ -20,6 +20,6 @@ export default class Board {
 
       // Points counting method
       this.point = (word.length * 2) - 4;
-    } else console.log('NIE MA', word);
+    }
   }
 }
