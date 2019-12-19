@@ -8,7 +8,7 @@ export default class Search {
   async getWord() {
     try {
       const res = await axios(
-        `http://api.datamuse.com/words?sp=%2A%2A${this.word}%2A%2A&max=1`,
+        `https://api.datamuse.com/words?sp=%2A%2A${this.word}%2A%2A&max=1`,
       );
 
       this.data = res.data;
