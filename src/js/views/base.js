@@ -43,7 +43,7 @@ export const countTime = () => {
     }
 
     elements.timer.innerHTML = `${min}:${zero}${sec}`;
-  }, 1000);
+  }, 500);
 
   return timer;
 };
