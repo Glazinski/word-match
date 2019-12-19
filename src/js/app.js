@@ -22,8 +22,9 @@ const lettersControl = () => {
   base.elements.letterBoxes = [...document.querySelectorAll('.btn-letter-box')];
 
   // gsap.to('.btn-letter-box', 0.8, { rotation: 360, transformOrigin: '50% 50%' });
-  gsap.fromTo('.btn-letter-box', 0.8, { scale: 0.9 },
-    { rotation: 360, transformOrigin: '50% 50%', scale: 1 });
+  // gsap.fromTo('.btn-letter-box', 0.8, { scale: 0.9 },
+  //   { rotation: 360, transformOrigin: '50% 50%', scale: 1 });
+  gsap.fromTo('.btn-letter-box', 0.6, { scale: 0.9 }, { scale: 1 });
 
   base.elements.letterBoxes
     .forEach(box => box.addEventListener('click', e => letters.onLetterClick(e.target, state)));
