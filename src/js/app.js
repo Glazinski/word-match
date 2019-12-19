@@ -21,7 +21,9 @@ const lettersControl = () => {
   // ADD THESE ELEMENTS AFTER RENDER THEM TO elements object
   base.elements.letterBoxes = [...document.querySelectorAll('.btn-letter-box')];
 
-  gsap.to('.btn-letter-box', 0.8, { rotation: 360, transformOrigin: '50% 50%' });
+  // gsap.to('.btn-letter-box', 0.8, { rotation: 360, transformOrigin: '50% 50%' });
+  gsap.fromTo('.btn-letter-box', 0.8, { scale: 0.9 },
+    { rotation: 360, transformOrigin: '50% 50%', scale: 1 });
 
   base.elements.letterBoxes
     .forEach(box => box.addEventListener('click', e => letters.onLetterClick(e.target, state)));
@@ -167,7 +169,7 @@ document.addEventListener('keypress', event => {
 });
 
 base.elements.play.addEventListener('click', controlPlay);
-controlPlay();
+
 // HOWTO
 base.elements.howtoBtn.addEventListener('click', () => {
   base.elements.menu.classList.toggle('hidden');

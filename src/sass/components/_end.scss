@@ -9,4 +9,52 @@
    z-index: 110;
    border-radius: 4px;
    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
+   padding: 1rem;
+
+   @include desktop {
+      max-width: 60vw;
+   }
+
+   @include desktop-xl {
+      max-width: 50vw;
+   }
+}
+
+.list--2 {
+   list-style-type: none;
+}
+
+.lists {
+   display: flex;
+   font-size: $font-size-default;
+   padding: 2rem;
+   line-height: 150%;
+   height: 65%;
+   overflow-y: auto;
+
+   @include desktop {
+      // padding-top: 2rem;
+   }
+
+   &__words {
+      width: 50%;
+      text-align: center;
+   }
+
+   &__points {
+      // text-align: center;
+      text-align: center;
+      width: 50%;
+   }
+}
+
+.end-control {
+   width: 85%;
+   margin: 1.5rem auto 0 auto;
+   display: flex;
+   justify-content: space-between;
+}
+
+.icon {
+   color: $end-color !important;
 }

@@ -53,8 +53,8 @@ export const toggleBindedKeys = () => {
 
 export const renderRandomLetters = state => {
   // const characters = 'LUCKY';
-  const characters = 'UUUNIT';
-  // const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  // const characters = 'UUUNIT';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const charArr = [...characters];
 
   const ids = [
@@ -102,25 +102,8 @@ export const renderRandomLetters = state => {
       `;
 
     generatedLetters.push(ran);
-    // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
   }
 
-  // RANDOM LETTER BOXES
-  // for (let i = 0; i < 16; i += 1) {
-  //   const bKey = isMobile ? 'hidden' : '';
-  //   const ran = charArr[Math.floor(Math.random() * charArr.length)];
-  //   buttonsMarkup += `
-  //     <div class="letter-container">
-  //        <button id="${ids[i]}" data-id="${ids[i]}"
-  //        class="btn btn-letter-box section-letters__letter-box">
-  //         <span id="letter" class="above-freeze letter">${ran}</span>
-  //        </button>
-  //        <span class="binded-key ${bKey}">${String.fromCharCode(parseInt(ids[i], 10))}</span>
-  //     </div>
-  //     `;
-  //   // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
-  //   generatedLetters.push(ran);
-  // }
   const lettersSection = `
     <section class="section-letters">
       <div class="section-letters__container">
@@ -132,42 +115,3 @@ export const renderRandomLetters = state => {
   state.allLetters = generatedLetters;
   return state;
 };
-
-// document.onclick = () => console.log(userWord);
-
-// export const renderRandomLetters = () => {
-//    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//    const charArr = [...characters];
-
-//    let buttonsMarkup = '';
-
-//    // RANDOM LETTER BOXES
-//    for (let i = 0; i < 16; i++) {
-//       buttonsMarkup += `<button data-id="${i}" class="btn btn-letter-box section-letters__letter-box">${
-//          charArr[Math.floor(Math.random() * charArr.length)]
-//       }</button>`;
-//       // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
-//    }
-
-//    elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
-// };
-
-// export const renderRandomLetters = () => {
-//    const characters = 'LUCKY';
-//    const charArr = [...characters];
-
-//    let buttonsMarkup = '';
-
-//    // RANDOM LETTER BOXES
-//    for (let i = 0; i < 16; i++) {
-//       const ran = charArr[Math.floor(Math.random() * charArr.length)];
-//       buttonsMarkup += `<button data-id="${ran
-//          .toLowerCase()
-//          .charCodeAt(
-//             0
-//          )}" class="btn btn-letter-box section-letters__letter-box">${ran}</button>`;
-//       // test[i].innerHTML = charArr[Math.floor(Math.random() * charArr.length)];
-//    }
-
-//    elements.lettersContainer.insertAdjacentHTML('afterbegin', buttonsMarkup);
-// };
