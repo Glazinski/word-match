@@ -57,7 +57,8 @@ export const clearWords = () => {
   clearLetters();
 
   elements.letterBoxes.forEach(box => {
-    gsap.to(box, 0.2, {
+    // box.classList.toggle('btn-clicked');
+    gsap.to(box, 0.1, {
       opacity: 1,
       backgroundColor: '#535353',
       boxShadow: 'none',
