@@ -174,7 +174,6 @@ document.addEventListener('keydown', event => {
 });
 
 base.elements.play.addEventListener('click', controlPlay);
-
 // HOWTO
 base.elements.howtoBtn.addEventListener('click', () => {
   base.elements.menu.classList.toggle('hidden');

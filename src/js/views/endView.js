@@ -6,8 +6,8 @@ const endGame = () => {
   const wordsList = document.querySelector('.lists__words');
   const pointsList = document.querySelector('.lists__points');
   const finito = '<div class="end"></div>';
-  const listOfAllPoints = state.listOfWords.map(el => `<li>${el}</li>`);
-  const listOfAllWords = state.allPoints.map(el => `<li>${el > 0 ? el : ''}</li>`);
+  const listOfAllPoints = state.listOfWords.map(el => `<li>${el}</li>`).reverse();
+  const listOfAllWords = state.allPoints.map(el => `<li>${el > 0 ? el : ''}</li>`).reverse();
 
   end.classList.remove('hidden');
   gsap.fromTo(end, 0.5, { opacity: 0 }, { opacity: 1, y: 20 });

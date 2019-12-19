@@ -11,8 +11,8 @@ export const showResults = (word, point, points) => {
   const pointMarkup = `<li>${point > 0 ? point : ''}</li>`;
 
   // Add word to board which was found in API
-  elements.words.insertAdjacentHTML('beforeend', wordMarkup);
-  elements.points.insertAdjacentHTML('beforeend', pointMarkup);
+  elements.words.insertAdjacentHTML('afterbegin', wordMarkup);
+  elements.points.insertAdjacentHTML('afterbegin', pointMarkup);
   // Sum up points from array
   elements.result.innerHTML = points.reduce((a, b) => a + b, 0);
 
