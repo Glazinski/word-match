@@ -5,11 +5,11 @@
    transform: translate(-50%, -50%);
    background-color: $primary-color;
    width: 90%;
-   height: 50vh;
+   height: 55vh;
    z-index: 110;
    border-radius: 4px;
    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
-   padding: 1rem;
+   // padding: 1rem;
 
    @include desktop {
       max-width: 60vw;
@@ -20,6 +20,23 @@
    }
 }
 
+.end-header {
+   display: flex;
+   align-items: center;
+   height: 15%;
+   width: 90%;
+   border-bottom: 1px solid white;
+   margin: 0 auto;
+   // margin: 3rem auto 0 auto;
+   // padding-bottom: 1rem;
+
+   h3 {
+      color: $end-color;
+      font-size: $font-size-l;
+      font-weight: 400;
+   }
+}
+
 .list--2 {
    list-style-type: none;
 }
@@ -27,13 +44,14 @@
 .lists {
    display: flex;
    font-size: $font-size-default;
-   padding: 2rem;
+   // padding: 2rem;
    line-height: 150%;
    height: 65%;
    overflow-y: auto;
+   margin-top: 1rem;
 
    @include desktop {
-      // padding-top: 2rem;
+      padding-top: 2rem;
    }
 
    &__words {
@@ -49,8 +67,11 @@
 }
 
 .end-control {
+   display: flex;
+   align-items: center;
+   height: 20%;
    width: 85%;
-   margin: 1.5rem auto 0 auto;
+   margin: 0 auto;
    display: flex;
    justify-content: space-between;
 }

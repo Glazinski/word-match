@@ -11,21 +11,21 @@ export const onLetterClick = (e, state) => {
   const doc = new DOMParser().parseFromString(innerHTML, 'text/xml');
   const singleLetter = doc.firstChild.innerHTML;
 
-  // e.classList.toggle('btn-clicked');
+  e.classList.toggle('btn-clicked');
 
-  if (e.style.backgroundColor === 'rgb(26, 26, 26)') {
-    gsap.to(e, 0.1, {
-      opacity: 1,
-      backgroundColor: '#535353',
-      boxShadow: 'none',
-    });
-  } else {
-    gsap.to(e, 0.1, {
-      opacity: 1,
-      backgroundColor: '#1a1a1a',
-      boxShadow: '0 0 1.5rem rgba(#1a1a1a, 0.8)',
-    });
-  }
+  // if (e.style.backgroundColor === 'rgb(26, 26, 26)') {
+  //   gsap.to(e, 0.1, {
+  //     opacity: 1,
+  //     backgroundColor: '#535353',
+  //     boxShadow: 'none',
+  //   });
+  // } else {
+  //   gsap.to(e, 0.1, {
+  //     opacity: 1,
+  //     backgroundColor: '#1a1a1a',
+  //     boxShadow: '0 0 1.5rem rgba(#1a1a1a, 0.8)',
+  //   });
+  // }
 
   if (userWord.has(id)) {
     userWord.delete(id);
