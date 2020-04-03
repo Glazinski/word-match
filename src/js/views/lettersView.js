@@ -14,13 +14,13 @@ export const onLetterClick = (e, state) => {
   // e.classList.toggle('btn-clicked');
 
   if (e.style.backgroundColor === 'rgb(26, 26, 26)') {
-    gsap.to(e, 0.1, {
+    window.gsap.to(e, 0.1, {
       opacity: 1,
       backgroundColor: '#535353',
       boxShadow: 'none',
     });
   } else {
-    gsap.to(e, 0.1, {
+    window.gsap.to(e, 0.1, {
       opacity: 1,
       backgroundColor: '#1a1a1a',
       boxShadow: '0 0 1.5rem rgba(#1a1a1a, 0.8)',
@@ -50,7 +50,7 @@ export const clearLetters = () => {
 
 export const toggleBindedKeys = () => {
   document.querySelectorAll('.binded-key').forEach(key => key.classList.toggle('hidden'));
-  gsap.fromTo('.binded-key', 0.2, { opacity: 0 }, { opacity: 1 });
+  window.gsap.fromTo('.binded-key', 0.2, { opacity: 0 }, { opacity: 1 });
 };
 
 export const renderRandomLetters = state => {

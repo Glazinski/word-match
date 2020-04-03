@@ -10,7 +10,7 @@ const endGame = () => {
   const listOfAllWords = state.allPoints.map(el => `<li>${el > 0 ? el : ''}</li>`).reverse();
 
   end.classList.remove('hidden');
-  gsap.fromTo(end, 0.5, { opacity: 0 }, { opacity: 1, y: 20 });
+  window.gsap.fromTo(end, 0.5, { opacity: 0 }, { opacity: 1, y: 20 });
   document.body.insertAdjacentHTML('afterbegin', finito);
 
   wordsList.innerHTML = listOfAllPoints.join('');

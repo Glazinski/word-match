@@ -21,10 +21,7 @@ const lettersControl = () => {
   // ADD THESE ELEMENTS AFTER RENDER THEM TO elements object
   base.elements.letterBoxes = [...document.querySelectorAll('.btn-letter-box')];
 
-  // gsap.to('.btn-letter-box', 0.8, { rotation: 360, transformOrigin: '50% 50%' });
-  // gsap.fromTo('.btn-letter-box', 0.8, { scale: 0.9 },
-  //   { rotation: 360, transformOrigin: '50% 50%', scale: 1 });
-  gsap.fromTo('.btn-letter-box', 0.6, { scale: 0.9 }, { scale: 1 });
+  window.gsap.fromTo('.btn-letter-box', 0.6, { scale: 0.9 }, { scale: 1 });
 
   base.elements.letterBoxes
     .forEach(box => box.addEventListener('click', e => letters.onLetterClick(e.target, state)));
@@ -113,42 +110,7 @@ const controlPlay = () => {
   // SEARCH CONTROLL
   [...document.querySelectorAll('.btn-control')]
     .map(item => item.addEventListener('click', searchControll));
-
-  // HINT Control
-  // base.elements.hint = document.querySelector('.hint');
-  // base.elements.hint.addEventListener('click', hintControl);
 };
-
-// HINT Control
-// TODO int the future
-// const hintControl = async () => {
-//   try {
-//     // If user has used all hints
-//     // then more hints are blocked
-//     if (state.hintAttempts !== 0) {
-//       state.hintAttempts -= 1;
-//       // Only if there is no word from Hint
-//       // generate new Hint
-//       if (!state.hint || state.hint.data.length === 0) {
-//         state.hint = new Hint(state.allLetters);
-//         await state.hint.getLetter();
-//       }
-
-//       [...document.querySelectorAll('.letter')].some(el => {
-//         if (el.innerHTML === state.hint.data[0].toUpperCase()) {
-//           el.parentNode.click();
-//           state.hint.data = state.hint.data.substr(1);
-//           // state.hint.attempts -= 1;
-//           return true;
-//         }
-//       });
-
-//       if (state.hint.data.length === 0) document.querySelector('.btn-control--enter').click();
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 // Logic with key pressing
 document.addEventListener('keydown', event => {

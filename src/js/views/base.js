@@ -58,7 +58,7 @@ export const clearWords = () => {
 
   elements.letterBoxes.forEach(box => {
     // box.classList.toggle('btn-clicked');
-    gsap.to(box, 0.1, {
+    window.gsap.to(box, 0.1, {
       opacity: 1,
       backgroundColor: '#535353',
       boxShadow: 'none',
@@ -84,8 +84,8 @@ export const showWarning = msg => {
 
     const warning = document.querySelector('.warning-rule');
 
-    gsap.from(warning, 0.5, { opacity: 0, y: -20 });
-    gsap.to(warning, 0.5, { opacity: 0, y: -20, delay: 2 });
+    window.gsap.from(warning, 0.5, { opacity: 0, y: -20 });
+    window.gsap.to(warning, 0.5, { opacity: 0, y: -20, delay: 2 });
 
     setTimeout(() => {
       warning.remove();
