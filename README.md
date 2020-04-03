@@ -1,9 +1,15 @@
 # WordMatch
 
-### First of all game is based on:
 
--  [Wordshake](https://learnenglish.britishcouncil.org/general-english/games/wordshake) by BritishCoucil
--  [Słowotok](https://play.google.com/store/apps/details?id=pl.slowotok.app&hl=en) by SpringLabs
+Game is written in Vanilla JS for practice and fun. No framework was used.
+
+### First of all game is based on:
+-  [Wordshake](https://learnenglish.britishcouncil.org/general-english/games/wordshake) published by British Council;
+-  [Słowotok](https://play.google.com/store/apps/details?id=pl.slowotok.app&hl=en) published by SpringLabs;
+
+### Technologies
+- For bundling I used webpack;
+- For animations gsap;
 
 ### For word matching I use
 
